@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Getting the "Nearby" tab to be default when running the application.
+        if window?.rootViewController as? UITabBarController != nil {
+            let tabBarController = window!.rootViewController as! UITabBarController
+            tabBarController.selectedIndex = 2 // Opens the 4th Tab
+        }
+        
         return true
     }
 
