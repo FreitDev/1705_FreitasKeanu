@@ -26,6 +26,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()
         locationManger.startUpdatingLocation()
+        
+        print(locationManger.location?.coordinate as Any)
+        
     }
     
 

@@ -52,7 +52,7 @@
         <!--ProfileVC-->
         <scene sceneID="WYZ-Lb-tK7">
             <objects>
-                <viewController id="RIV-0E-Vbv" userLabel="ProfileVC" sceneMemberID="viewController">
+                <viewController id="RIV-0E-Vbv" userLabel="ProfileVC" customClass="MoreVC" customModule="v0rtx" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dx1-5V-Nfz"/>
                         <viewControllerLayoutGuide type="bottom" id="BBl-if-WZs"/>
@@ -68,6 +68,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUg-LW-igM">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="z9k-do-NBH">
+                                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="P2d-O0-1vw">
+                                            <connections>
+                                                <action selector="logOutBtnTapped:" destination="RIV-0E-Vbv" id="MLh-I7-AE2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -90,31 +103,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xto-kc-2zs">
-                                <rect key="frame" x="0.0" y="105" width="414" height="582"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-ky-lht">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ma9-NQ-9yK">
-                                <rect key="frame" x="147" y="130" width="121" height="29"/>
+                                <rect key="frame" x="147" y="86" width="121" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Map"/>
                                     <segment title="List"/>
                                 </segments>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-ky-lht">
-                                <rect key="frame" x="0.0" y="61" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-yK-stp">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="v0tx" id="PgI-b2-wcl"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Nearby" id="DUG-Yi-D5T"/>
                     <connections>
@@ -232,10 +240,38 @@
             </objects>
             <point key="canvasLocation" x="463.768115942029" y="999.45652173913049"/>
         </scene>
+        <!--LoginVC-->
+        <scene sceneID="9u0-9h-ogL">
+            <objects>
+                <viewController storyboardIdentifier="LoginVC" id="o76-OK-ZYe" userLabel="LoginVC" customClass="LogInVC" customModule="v0rtx" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0JI-2u-Le7"/>
+                        <viewControllerLayoutGuide type="bottom" id="y12-Tu-Zpc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yZ0-We-gAd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIt-Zy-bhv">
+                                <rect key="frame" x="356" y="28" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipBtnTapped:" destination="o76-OK-ZYe" eventType="touchUpInside" id="A2t-Nf-Vzx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qTs-6Y-Xo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1358" y="135"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="q9F-lZ-fZY">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zIt-4c-QN3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarNav" automaticallyAdjustsScrollViewInsets="NO" id="zIt-4c-QN3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ogb-AY-Lz9">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
