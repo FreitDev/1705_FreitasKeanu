@@ -31,7 +31,6 @@ class MoreVC: UIViewController {
         let logInVC = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LogInVC
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = logInVC
-        
     }
 
     /*

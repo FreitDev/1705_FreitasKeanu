@@ -21,7 +21,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()
@@ -31,8 +30,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,8 +50,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.mapView.showsUserLocation = true
     }
-
-    // Test to see if the Repo is working...
-
 }
 
