@@ -49,14 +49,19 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return cell
     }
 
-    /*
-     MARK: - Navigation
-
-     In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         Get the new view controller using segue.destinationViewController.
-         Pass the selected object to the new view controller.
+        
+        // Pass over the whole model object.
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let sendInfo = businesses[indexPath.row]
+            
+            // Creating the destination to pass the object to the new ViewController.
+            if let destination = segue.destination as? DetailsVC {
+                destination.namePassed = sendInfo
+            }
+        }
     }
-    */
-
 }

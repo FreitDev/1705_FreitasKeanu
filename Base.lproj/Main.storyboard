@@ -68,12 +68,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUg-LW-igM">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XUg-LW-igM">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem id="z9k-do-NBH">
-                                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="P2d-O0-1vw">
+                                    <navigationItem title="More" id="z9k-do-NBH">
+                                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="P2d-O0-1vw">
                                             <connections>
                                                 <action selector="logOutBtnTapped:" destination="RIV-0E-Vbv" id="MLh-I7-AE2"/>
                                             </connections>
@@ -82,7 +82,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="bGe-qv-Hoy"/>
                 </viewController>
@@ -101,10 +101,9 @@
                     <view key="view" contentMode="scaleToFill" id="ip6-83-1ae">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="SCg-em-do3">
-                        <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ma9-NQ-9yK">
                             <rect key="frame" x="20" y="7.5" width="374" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -138,13 +137,13 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ig-hF-U8y">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xto-kc-2zs">
                                 <rect key="frame" x="0.0" y="107" width="414" height="580"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oVf-n1-YLf">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="oVf-n1-YLf">
                                 <rect key="frame" x="0.0" y="63" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -171,7 +170,37 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2460.8695652173915" y="169.56521739130437"/>
+            <point key="canvasLocation" x="2501" y="-15"/>
+        </scene>
+        <!--DetailsVC-->
+        <scene sceneID="pjx-MU-65V">
+            <objects>
+                <viewController id="Qqh-tu-b5s" customClass="DetailsVC" customModule="v0rtx" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="egc-Hc-aBY"/>
+                        <viewControllerLayoutGuide type="bottom" id="mGp-CA-rmk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tf3-Dd-YYF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkD-xB-HiX">
+                                <rect key="frame" x="20" y="345" width="374" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLbl" destination="rkD-xB-HiX" id="jN6-NZ-mhE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bqM-Iw-8z7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3366.666666666667" y="314.67391304347831"/>
         </scene>
         <!--ListVC-->
         <scene sceneID="Mhb-sx-E9Q">
@@ -211,6 +240,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="nameLbl" destination="1tj-sX-A25" id="YKd-sc-nq8"/>
+                                                    <segue destination="Qqh-tu-b5s" kind="show" identifier="" id="Fyn-SU-pUZ"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -219,7 +249,7 @@
                                             <outlet property="delegate" destination="6pP-j2-JNu" id="YX9-a9-CJo"/>
                                         </connections>
                                     </tableView>
-                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L4k-WC-XKV">
+                                    <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="L4k-WC-XKV">
                                         <rect key="frame" x="0.0" y="63" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -228,7 +258,7 @@
                                         </connections>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,7 +283,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2460.8695652173915" y="829.89130434782612"/>
+            <point key="canvasLocation" x="2501" y="646"/>
         </scene>
         <!--FavoritesVC-->
         <scene sceneID="lq7-1w-Da8">
@@ -274,8 +304,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-GB-i0b">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Favorites" id="7y1-xh-8NR"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="x0Q-qO-C5k"/>
                 </viewController>
@@ -286,7 +323,7 @@
         <!--ActivityVC-->
         <scene sceneID="Imt-IP-Wfl">
             <objects>
-                <viewController id="D4H-rk-TD8" userLabel="ActivityVC" sceneMemberID="viewController">
+                <viewController title="Activity" id="D4H-rk-TD8" userLabel="ActivityVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gel-Gn-iuA"/>
                         <viewControllerLayoutGuide type="bottom" id="jBP-nm-yGa"/>
@@ -297,7 +334,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ys-34-Zs1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptK-Xl-Dix">
+                                        <rect key="frame" x="0.0" y="19" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <items>
+                                            <navigationItem title="Activity" id="txK-Uz-E7g"/>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This would be the activity page..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7s-qU-2BV">
                                 <rect key="frame" x="81" y="358" width="252" height="21"/>
@@ -319,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piZ-fR-7u6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463.768115942029" y="999.45652173913049"/>
+            <point key="canvasLocation" x="464" y="984"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="9u0-9h-ogL">
@@ -341,13 +387,24 @@
                                     <action selector="skipBtnTapped:" destination="o76-OK-ZYe" eventType="touchUpInside" id="A2t-Nf-Vzx"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="BKD-Ly-fIr">
+                                <rect key="frame" x="87" y="210" width="240" height="264"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="V0RTX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-x9-K1y">
+                                <rect key="frame" x="123" y="137" width="168" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTs-6Y-Xo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="135"/>
+            <point key="canvasLocation" x="-1359.4202898550725" y="134.5108695652174"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="q9F-lZ-fZY">
@@ -391,4 +448,7 @@
             <point key="canvasLocation" x="815.94202898550736" y="315.48913043478262"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="213" height="158"/>
+    </resources>
 </document>
