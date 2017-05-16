@@ -11,11 +11,14 @@ import UIKit
 
 class Business {
     
-    let name : String
+    let name : String?
     let address : String
-    let longitude : Int
-    let latitude : Int
-    let distance : Int
+    let longitude : Double
+    let latitude : Double
+    
+    // Will add this data in later. 
+    
+//    let distance : Int
 //    let genre : String
 //    let topic : String
 //    let phoneNumber : String
@@ -26,11 +29,20 @@ class Business {
 //    let images : [UIImage]
 //    let deals : [String : String]
     
-    init(name : String, address : String, distance : Int, longitude : Int, latitude : Int ) {
+    init(values:[String:AnyObject], name:String) {
+        self.address = values["address"] as! String
+        self.longitude = values["longitude"] as! Double
+        self.latitude = values["latitude"] as! Double
         self.name = name
-        self.address = address
-        self.distance = distance
-        self.longitude = longitude
-        self.latitude = latitude
     }
+    
+    // Might still need this so I am leaving this for now.
+    
+//    init(name : String, address : String, longitude : Double, latitude : Double ) {
+//        self.name = name
+//        self.address = address
+//        self.longitude = longitude
+//        self.latitude = latitude
+//        
+//    }
 }

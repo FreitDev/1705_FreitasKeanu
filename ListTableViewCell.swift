@@ -11,6 +11,7 @@ import UIKit
 class ListTableViewCell: UITableViewCell {
     
     @IBOutlet var nameLbl: UILabel!
+    @IBOutlet var addressLbl: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

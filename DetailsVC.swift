@@ -11,8 +11,10 @@ import UIKit
 class DetailsVC: UIViewController {
     
     @IBOutlet var nameLbl: UILabel!
+    @IBOutlet var addressLbl: UILabel!
     
     var namePassed = String()
+    var addressPassed = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +24,14 @@ class DetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         nameLbl.text = namePassed
+        addressLbl.text = addressPassed
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 }

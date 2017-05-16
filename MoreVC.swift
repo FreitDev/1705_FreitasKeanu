@@ -42,5 +42,8 @@ class MoreVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .default
+    }
 }

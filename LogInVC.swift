@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import FirebaseAuth
 
 class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -25,7 +26,7 @@ class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
             tabBarController.selectedIndex = 2
             
         }else{
-            // not logged in
+            // Not logged in
         }
         
         let logInBtn = FBSDKLoginButton()
@@ -48,19 +49,36 @@ class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
         print("Did log out of Facebook.")
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let logInVC = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LogInVC
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = logInVC
-        
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    
         if error != nil {
             print(error)
             return
         }
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            
+            if error != nil {
+                return
+            }
+        }
+        
         print("Successfully logged into Facebook.")
         
         DispatchQueue.main.async {
@@ -81,15 +99,4 @@ class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
         tabBarController.selectedIndex = 2
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -30,7 +30,8 @@ class MasterVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        setupView()
+        segmentedControl()
+        update()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,17 +39,13 @@ class MasterVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupView(){
-        setupSegmentedControl()
-        updateView()
-    }
-    
-    func updateView(){
+    func update(){
         mapVC.view.isHidden = !(mapAndListControl.selectedSegmentIndex == 0)
         listVC.view.isHidden = (mapAndListControl.selectedSegmentIndex == 0)
     }
     
-    func setupSegmentedControl(){
+    func segmentedControl(){
+        
         mapAndListControl.removeAllSegments()
         mapAndListControl.insertSegment(withTitle: "Map", at: 0, animated: false)
         mapAndListControl.insertSegment(withTitle: "List", at: 1, animated: false)
@@ -59,7 +56,7 @@ class MasterVC: UIViewController {
     }
     
     func selectionDidCHanged(sender:UISegmentedControl) {
-        updateView()
+        update()
     }
     
     func addViewControllerAsChildViewController(childViewController: UIViewController){

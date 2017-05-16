@@ -9,14 +9,19 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseDatabase
+import Firebase
+import FirebaseStorage
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // Connect the Map.
     @IBOutlet var mapView: MKMapView!
     
+    var coordinates = [Int]()
     let locationManger = CLLocationManager()
-
+    var ref:FIRDatabaseReference?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,6 +33,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         print(locationManger.location?.coordinate as Any)
         
+        // This is testing to use Firebase Storage for my imgaes.  I will use this later...
+        let reference = FIRStorage.storage().reference()
+        
+        let image = UIImageJPEGRepresentation(#imageLiteral(resourceName: "Logo"), 0.5)
+        reference.child("Images").put(image!, metadata: nil) { (metadata, error) in
+            if let imageURl = metadata?.downloadURL()?.absoluteString {
+                 print(imageURl)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,5 +64,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.mapView.showsUserLocation = true
     }
+    
 }
 
