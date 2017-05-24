@@ -16,7 +16,7 @@ class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         if(FBSDKAccessToken.current() != nil){
             // logged in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -40,6 +40,7 @@ class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
         
         view.addConstraints([horizontal, vertical, width, height])
         logInBtn.delegate = self
+        logInBtn.readPermissions = ["email", "public_profile"]
         
     }
 
@@ -65,32 +66,43 @@ class LogInVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-    
         if error != nil {
-            print(error)
+            print("error")
             return
         }
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, results, error) in
             if error != nil {
+                print("failed")
                 return
             }
-        }
-        
-        print("Successfully logged into Facebook.")
-        
-        DispatchQueue.main.async {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarNav") as! UITabBarController
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = tabBarController
-            tabBarController.selectedIndex = 2
+            print(result)
+            let accessToken = FBSDKAccessToken.current()
+            guard let accessTokenString = accessToken?.tokenString else
+            {
+                return
+            }
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                
+                if error != nil {
+                    print("Something went wrong")
+                    return
+                }
+            })
+            
+            DispatchQueue.main.async {
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarNav") as! UITabBarController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = tabBarController
+                tabBarController.selectedIndex = 2
+            }
         }
     }
     
     @IBAction func skipBtnTapped(_ sender: UIButton) {
+        
         DispatchQueue.main.async {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyBoard.instantiateViewController(withIdentifier: "tabBarNav") as! UITabBarController

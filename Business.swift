@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class Business {
     
@@ -15,7 +16,7 @@ class Business {
     let address : String
     let longitude : Double
     let latitude : Double
-    
+    var coordinate: CLLocationCoordinate2D
     // Will add this data in later. 
     
 //    let distance : Int
@@ -34,6 +35,7 @@ class Business {
         self.longitude = values["longitude"] as! Double
         self.latitude = values["latitude"] as! Double
         self.name = name
+        coordinate = CLLocationCoordinate2DMake(latitude, longitude)
     }
     
     // Might still need this so I am leaving this for now.

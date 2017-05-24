@@ -13,29 +13,16 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     
-    var businessArray = [Business]()
-    
+    var businessArray = [Business]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
     var ref : FIRDatabaseReference?
-    var databaseHandle : FIRDatabaseHandle?
+    var handle : FIRDatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        ref = FIRDatabase.database().reference()
-        databaseHandle =  ref?.child("Businesses").child("Type").child("Restaurants").observe(.childAdded, with: { (snapshot) in
-            
-            // Add things here
-            let businessAndValues = Business(values: (snapshot.value as? [String:AnyObject])!, name:snapshot.key)
-            
-            // For testing purposes.
-            print(businessAndValues.name!)
-            print(businessAndValues.address)
-            
-            self.businessArray.append(businessAndValues)
-            
-            self.tableView.reloadData()
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,14 +47,14 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             as? ListTableViewCell
             else{ return tableView.dequeueReusableCell(withIdentifier: "Cell1_Reuse", for: indexPath)
         }
-                let scores = businessArray[indexPath.row]
-                cell.nameLbl?.text = scores.name
-                cell.addressLbl?.text = scores.address
-
-                return cell
+        
+        let scores = businessArray[indexPath.row]
+        cell.nameLbl?.text = scores.name
+        cell.addressLbl?.text = scores.address
+        
+        return cell
     }
 
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

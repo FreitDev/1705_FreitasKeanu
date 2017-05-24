@@ -11,6 +11,9 @@ import FBSDKLoginKit
 
 class MoreVC: UIViewController {
     
+    @IBOutlet var radiusLbl: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +36,62 @@ class MoreVC: UIViewController {
         appDelegate.window?.rootViewController = logInVC
     }
 
+    @IBAction func radiusStepper(_ sender: UIStepper) {
+        
+        let counter = Int(sender.value)
+        radiusLbl.text = String("\(counter) mi.")
+    }
+    
+    @IBAction func locationServicesUISwitch(_ sender: UISwitch) {
+        
+        if sender.isOn == true {
+            
+            let alertController = UIAlertController (title: "Turn on Location Services.", message: "Go to Settings?", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)")
+                    })
+                }
+            }
+            alertController.addAction(settingsAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
+                print("cancel pressed.")
+                sender.isOn = false
+            }
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+        } else if sender.isOn == false {
+            
+            let alertController = UIAlertController (title: "Turn off Location Services.", message: "Go to Settings?", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)")
+                    })
+                }
+            }
+            alertController.addAction(settingsAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
+                print("cancel pressed.")
+                sender.isOn = true
+            }
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -43,7 +102,5 @@ class MoreVC: UIViewController {
     }
     */
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .default
-    }
+
 }
