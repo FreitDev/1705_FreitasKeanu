@@ -13,16 +13,39 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     
+<<<<<<< HEAD
     var businessArray = [Business]() {
         didSet{
             self.tableView.reloadData()
         }
     }
+=======
+    var businessArray = [Business]()
+>>>>>>> origin/master
     var ref : FIRDatabaseReference?
     var handle : FIRDatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
+=======
+        
+        // Do any additional setup after loading the view.
+        ref = FIRDatabase.database().reference()
+        handle =  ref?.child("Businesses").child("Type").child("Restaurants").observe(.childAdded, with: { (snapshot) in
+            
+            // Add things here
+            let businessAndValues = Business(values: (snapshot.value as? [String:AnyObject])!, name:snapshot.key)
+            
+            // For testing purposes.
+            print(businessAndValues.name!)
+            print(businessAndValues.address)
+            
+            self.businessArray.append(businessAndValues)
+            
+            self.tableView.reloadData()
+        })
+>>>>>>> origin/master
     }
     
     override func viewWillAppear(_ animated: Bool) {

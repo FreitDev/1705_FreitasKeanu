@@ -18,6 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // Connect the Map.
     @IBOutlet var mapView: MKMapView!
     
+<<<<<<< HEAD
     var mapBusinessArray = [Business](){
         didSet{
             for item in self.mapBusinessArray {
@@ -48,6 +49,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         }
     }
+=======
+    var mapBusinessArray = [Business]()
+>>>>>>> origin/master
     //var startedLoadingPOIs = false
     let locationManger = CLLocationManager()
     var ref:FIRDatabaseReference?
@@ -59,7 +63,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+<<<<<<< HEAD
         //annotationSetUp()
+=======
+        annotationSetUp()
+>>>>>>> origin/master
         
         mapView.delegate = self
         locationManger.delegate = self
@@ -130,9 +138,55 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             selectedAnnotation = view.annotation as? MKPointAnnotation
             performSegue(withIdentifier: "fromMapToDetailsVC", sender: self)
         }
+<<<<<<< HEAD
     }
     
         
+=======
+    }
+    
+    func annotationSetUp() {
+        
+        // Look at this... This is the same as in my list view...
+        ref = FIRDatabase.database().reference()
+        handle =  ref?.child("Businesses").child("Type").child("Restaurants").observe(.childAdded, with: { (snapshot) in
+            
+            // Add things here
+            let businessAndValues = Business(values: (snapshot.value as? [String:AnyObject])!, name:snapshot.key)
+            
+            self.mapBusinessArray.append(businessAndValues)
+            
+            for item in self.mapBusinessArray {
+                
+                let annotation = MKPointAnnotation()
+                annotation.title = item.name
+                annotation.subtitle = item.address
+                annotation.coordinate = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
+                
+                let itemLocation = CLLocation(latitude: item.latitude, longitude: item.longitude)
+                
+                let distance = (self.locationManger.location?.distance(from: itemLocation))!
+                let distanceInMiles = distance / 1609.344
+                
+                print(String(format: "The distance to the retaurant is %.01f miles", distanceInMiles))
+                
+                if(distanceInMiles <= 5)
+               {
+                    // Under 5 miles
+                DispatchQueue.main.async {
+                    self.mapView.addAnnotation(annotation)
+                }
+                }
+                else
+                {
+                    // Out of 5 mile range
+                    print("annotation not in range")
+                }
+            }
+        })
+    }
+    
+>>>>>>> origin/master
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
